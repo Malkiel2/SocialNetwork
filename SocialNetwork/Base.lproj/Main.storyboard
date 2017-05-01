@@ -150,26 +150,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-JB-KN6">
-                                <rect key="frame" x="154" y="317" width="67" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Sign Out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signOutTapped:" destination="2VG-bA-vhO" eventType="touchUpInside" id="tme-iR-rkF"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xif-eU-S2S" customClass="FancyView" customModule="SocialNetwork" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="zjJ-zB-DnG">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="zjJ-zB-DnG">
                                         <rect key="frame" x="14" y="20" width="45" height="38"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="4R2-xQ-sxi"/>
                                             <constraint firstAttribute="height" constant="38" id="FKH-7m-fak"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="8Y2-Oq-Z3z" appends="YES" id="TIb-am-Hh7"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbw-0k-irh">
                                         <rect key="frame" x="157" y="21" width="60" height="36"/>
@@ -219,7 +212,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.81176470588235294" green="0.84705882352941175" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="FUG-9q-AyV" firstAttribute="top" secondItem="1HH-VA-Y7b" secondAttribute="top" constant="8" id="2q0-IR-Flf"/>
                                     <constraint firstAttribute="trailing" secondItem="FUG-9q-AyV" secondAttribute="trailing" constant="8" id="9oP-DF-uh9"/>
@@ -228,15 +221,15 @@
                                     <constraint firstAttribute="bottom" secondItem="FUG-9q-AyV" secondAttribute="bottom" constant="8" id="ebE-3h-Sku"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="338" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8oX-OD-HT1">
-                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="338" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8oX-OD-HT1">
+                                <rect key="frame" x="0.0" y="141" width="375" height="526"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="338" id="7d9-0J-NZd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="338" id="7d9-0J-NZd" customClass="PostCell" customModule="SocialNetwork" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="338"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7d9-0J-NZd" id="lDV-Ur-MKm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="337.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xql-VP-5WF" customClass="FancyView" customModule="SocialNetwork" customModuleProvider="target">
@@ -261,7 +254,7 @@
                                                                             <color key="textColor" red="0.86666666670000003" green="0.17254901959999999" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-t4-KNs" customClass="CircleView" customModule="SocialNetwork" customModuleProvider="target">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-heart" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-t4-KNs">
                                                                             <rect key="frame" x="257" y="0.0" width="70" height="60"/>
                                                                         </imageView>
                                                                     </subviews>
@@ -272,7 +265,10 @@
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DeB-rb-K8O">
                                                                     <rect key="frame" x="0.0" y="209.5" width="327" height="50"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="lvu-Kr-GHf"/>
+                                                                    </constraints>
+                                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
@@ -314,6 +310,13 @@
                                                 <constraint firstItem="Xql-VP-5WF" firstAttribute="leading" secondItem="lDV-Ur-MKm" secondAttribute="leading" constant="16" id="n5L-aL-3Sn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="caption" destination="DeB-rb-K8O" id="i4M-Is-K40"/>
+                                            <outlet property="likesLbl" destination="G7x-ah-cwf" id="YUs-B0-uT9"/>
+                                            <outlet property="postImg" destination="Qrk-fX-Vhs" id="EvR-q5-nPk"/>
+                                            <outlet property="profileImage" destination="p3W-pH-N8O" id="Ugf-wo-NsN"/>
+                                            <outlet property="usernameLbl" destination="Vz1-UG-qMA" id="nBF-ak-0Zs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -325,7 +328,7 @@
                             <constraint firstItem="xif-eU-S2S" firstAttribute="top" secondItem="IdX-ms-QHF" secondAttribute="top" id="ANc-ZM-N7P"/>
                             <constraint firstAttribute="trailing" secondItem="1HH-VA-Y7b" secondAttribute="trailing" constant="16" id="Ncd-jb-SQt"/>
                             <constraint firstAttribute="trailing" secondItem="8oX-OD-HT1" secondAttribute="trailing" id="OhW-fq-LSZ"/>
-                            <constraint firstItem="8oX-OD-HT1" firstAttribute="top" secondItem="1HH-VA-Y7b" secondAttribute="bottom" constant="16" id="WSw-50-OAa"/>
+                            <constraint firstItem="8oX-OD-HT1" firstAttribute="top" secondItem="1HH-VA-Y7b" secondAttribute="bottom" constant="5" id="WSw-50-OAa"/>
                             <constraint firstItem="8oX-OD-HT1" firstAttribute="leading" secondItem="IdX-ms-QHF" secondAttribute="leading" id="lVf-3A-lyc"/>
                             <constraint firstItem="jIH-RT-MtG" firstAttribute="top" secondItem="8oX-OD-HT1" secondAttribute="bottom" id="nhb-Fm-AuT"/>
                             <constraint firstItem="1HH-VA-Y7b" firstAttribute="top" secondItem="xif-eU-S2S" secondAttribute="bottom" constant="16" id="uAp-J6-DOX"/>
@@ -333,10 +336,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="8oX-OD-HT1" id="r5u-hi-fzp"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="HgM-WK-dve"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7T7-LN-GN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8Y2-Oq-Z3z">
+                    <connections>
+                        <action selector="signOutTapped:" destination="2VG-bA-vhO" id="B7I-7g-xPD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1101.5999999999999" y="91.304347826086968"/>
         </scene>
