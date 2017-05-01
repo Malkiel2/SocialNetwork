@@ -212,8 +212,14 @@
                                                     <constraint firstAttribute="width" constant="39" id="fNU-w6-Zvw"/>
                                                 </constraints>
                                                 <state key="normal" image="add-post"/>
+                                                <connections>
+                                                    <action selector="postBtnTapped:" destination="2VG-bA-vhO" eventType="touchUpInside" id="vAs-F4-SFK"/>
+                                                </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="PdM-Fw-YSL" firstAttribute="leading" secondItem="ohi-tD-3R8" secondAttribute="trailing" constant="10" id="UFH-0F-kSZ"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
@@ -340,6 +346,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captionField" destination="PdM-Fw-YSL" id="Vcd-js-SFR"/>
                         <outlet property="imageAdd" destination="ohi-tD-3R8" id="oRv-1D-oBS"/>
                         <outlet property="tableView" destination="8oX-OD-HT1" id="r5u-hi-fzp"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="HgM-WK-dve"/>

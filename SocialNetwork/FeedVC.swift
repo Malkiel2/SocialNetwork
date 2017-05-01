@@ -12,13 +12,14 @@ import SwiftKeychainWrapper
 
 class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var captionField: FancyField!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var imageAdd: CircleView!
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
-    
+    var imageSelected = false
     
 
     override func viewDidLoad() {
@@ -74,6 +75,7 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIIm
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageAdd.image = image
+            imageSelected = true
         } else {
             print("MALKI: A valid image wasn't selected.")
         }
@@ -85,6 +87,36 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIIm
         present(imagePicker, animated: true, completion: nil)
         
     }
+    
+    
+    @IBAction func postBtnTapped(_ sender: Any) {
+        
+        guard let caption = captionField.text, caption != "" else {
+            print("MALKI: Caption must be entered")
+            return
+        }
+        guard let img = imageAdd.image, imageSelected == true else {
+            print("MALKI: Image must be selected")
+            return
+        }
+        
+        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
+            
+            let imgUid = NSUUID().uuidString//give a unique id
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            DataService.ds.REF_POST_IMAGES.child(imgUid).put(imgData, metadata: metadata) {(metadata, error) in
+                if error != nil {
+                    print("MALKI: Unable to upload image to Firbase storage")
+                } else {
+                    print("Malki: Successfuly uploaded image to Firebase storage")
+                    let downloadUrl = metadata?.downloadURL()?.absoluteString
+                }
+            }
+            
+        }
+    }
+    
     
     @IBAction func signOutTapped(_ sender: Any) {
         
