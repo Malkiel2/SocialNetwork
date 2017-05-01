@@ -19,6 +19,8 @@
 		6FBBD27E1EB615BD008C4A7F /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBD27D1EB615BD008C4A7F /* RoundButton.swift */; };
 		6FBBD2801EB62380008C4A7F /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBD27F1EB62380008C4A7F /* FancyField.swift */; };
 		6FBBD2821EB624B8008C4A7F /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBD2811EB624B8008C4A7F /* FancyButton.swift */; };
+		6FBBD2851EB6836B008C4A7F /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBD2841EB6836B008C4A7F /* FeedVC.swift */; };
+		6FBBD2871EB72C54008C4A7F /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBD2861EB72C54008C4A7F /* CircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,9 @@
 		6FBBD27D1EB615BD008C4A7F /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		6FBBD27F1EB62380008C4A7F /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		6FBBD2811EB624B8008C4A7F /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
+		6FBBD2831EB679A7008C4A7F /* SocialNetwork.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SocialNetwork.entitlements; sourceTree = "<group>"; };
+		6FBBD2841EB6836B008C4A7F /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		6FBBD2861EB72C54008C4A7F /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +78,7 @@
 		6F583B071EB5EF5100DB36C5 /* SocialNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				6FBBD2831EB679A7008C4A7F /* SocialNetwork.entitlements */,
 				6FBBD27A1EB61363008C4A7F /* Util */,
 				6FBBD2751EB5F310008C4A7F /* Model */,
 				6FBBD2761EB5F317008C4A7F /* View */,
@@ -101,6 +107,7 @@
 				6FBBD27D1EB615BD008C4A7F /* RoundButton.swift */,
 				6FBBD27F1EB62380008C4A7F /* FancyField.swift */,
 				6FBBD2811EB624B8008C4A7F /* FancyButton.swift */,
+				6FBBD2861EB72C54008C4A7F /* CircleView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -109,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6F583B0A1EB5EF5100DB36C5 /* SignInVC.swift */,
+				6FBBD2841EB6836B008C4A7F /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -175,6 +183,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 7R3D49579S;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -263,10 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FBBD2871EB72C54008C4A7F /* CircleView.swift in Sources */,
 				6FBBD2801EB62380008C4A7F /* FancyField.swift in Sources */,
 				6F583B0B1EB5EF5100DB36C5 /* SignInVC.swift in Sources */,
 				6FBBD27E1EB615BD008C4A7F /* RoundButton.swift in Sources */,
 				6FBBD2821EB624B8008C4A7F /* FancyButton.swift in Sources */,
+				6FBBD2851EB6836B008C4A7F /* FeedVC.swift in Sources */,
 				6F583B091EB5EF5100DB36C5 /* AppDelegate.swift in Sources */,
 				6FBBD2791EB612E7008C4A7F /* FancyView.swift in Sources */,
 				6FBBD27C1EB61375008C4A7F /* Constants.swift in Sources */,
@@ -395,6 +410,7 @@
 			baseConfigurationReference = 5A657DB7CBBDEA9A306D62AE /* Pods-SocialNetwork.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SocialNetwork/SocialNetwork.entitlements;
 				DEVELOPMENT_TEAM = 7R3D49579S;
 				INFOPLIST_FILE = SocialNetwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -409,6 +425,7 @@
 			baseConfigurationReference = 557ED2816A76F9E93A0305EA /* Pods-SocialNetwork.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SocialNetwork/SocialNetwork.entitlements;
 				DEVELOPMENT_TEAM = 7R3D49579S;
 				INFOPLIST_FILE = SocialNetwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
