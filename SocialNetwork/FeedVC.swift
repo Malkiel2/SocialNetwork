@@ -14,8 +14,10 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIIm
     
     @IBOutlet weak var captionField: FancyField!
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var imageAdd: CircleView!
+    
+    var successPosted = false
+    
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
@@ -60,12 +62,10 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIIm
             
             if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString) {
                 cell.configureCell(post: post, img: img)
-                return cell
             } else {
                 cell.configureCell(post: post)
-                return cell
             }
-            
+            return cell
         } else {
             return PostCell()
         }
@@ -111,12 +111,37 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIIm
                 } else {
                     print("Malki: Successfuly uploaded image to Firebase storage")
                     let downloadUrl = metadata?.downloadURL()?.absoluteString
+                    if let url = downloadUrl {
+                        self.postToFirebase(imgUrl: url)
+                        self.successPosted = true
+                    }
+                    
                 }
             }
-            
+            if successPosted {
+                tableView.reloadData()
+                self.successPosted = false
+            }
         }
     }
     
+    func postToFirebase(imgUrl: String) {
+        
+        let post: Dictionary<String, AnyObject> = [
+            "caption": captionField.text as AnyObject,
+            "imageUrl": imgUrl as AnyObject,
+            "likes": 0 as AnyObject
+        ]
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        //clean the fields
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+    }
     
     @IBAction func signOutTapped(_ sender: Any) {
         
@@ -126,5 +151,6 @@ class FeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIIm
         performSegue(withIdentifier: "goToSignIn", sender: nil)
         
     }
+    
 
 }
